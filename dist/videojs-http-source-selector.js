@@ -1,17 +1,32 @@
+/**
+ * videojs-http-source-selector
+ * @version 1.1.6
+ * @copyright 2022 Justin Fujita <Justin@pivotshare.com>
+ * @license MIT
+ */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
   (global = global || self, global['videojs-http-source-selector'] = factory(global.videojs));
-}(this, function (videojs) { 'use strict';
+}(this, (function (videojs) { 'use strict';
 
-  videojs = videojs && videojs.hasOwnProperty('default') ? videojs['default'] : videojs;
+  videojs = videojs && Object.prototype.hasOwnProperty.call(videojs, 'default') ? videojs['default'] : videojs;
 
-  var version = "1.1.5";
+  var version = "1.1.6";
 
   function _inheritsLoose(subClass, superClass) {
     subClass.prototype = Object.create(superClass.prototype);
     subClass.prototype.constructor = subClass;
-    subClass.__proto__ = superClass;
+
+    _setPrototypeOf(subClass, superClass);
+  }
+
+  function _setPrototypeOf(o, p) {
+    _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
+      o.__proto__ = p;
+      return o;
+    };
+    return _setPrototypeOf(o, p);
   }
 
   function _assertThisInitialized(self) {
@@ -25,9 +40,7 @@
   var MenuItem = videojs.getComponent('MenuItem');
   var Component = videojs.getComponent('Component');
 
-  var SourceMenuItem =
-  /*#__PURE__*/
-  function (_MenuItem) {
+  var SourceMenuItem = /*#__PURE__*/function (_MenuItem) {
     _inheritsLoose(SourceMenuItem, _MenuItem);
 
     function SourceMenuItem(player, options) {
@@ -70,9 +83,7 @@
 
   var MenuButton = videojs.getComponent('MenuButton');
 
-  var SourceMenuButton =
-  /*#__PURE__*/
-  function (_MenuButton) {
+  var SourceMenuButton = /*#__PURE__*/function (_MenuButton) {
     _inheritsLoose(SourceMenuButton, _MenuButton);
 
     function SourceMenuButton(player, options) {
@@ -259,4 +270,4 @@
 
   return httpSourceSelector;
 
-}));
+})));
